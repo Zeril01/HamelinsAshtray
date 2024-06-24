@@ -1,16 +1,21 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<!-- Import tModLoader mod properties -->
 	<Import Project="..\tModLoader.targets" />
 
 	<!-- General -->
 	<PropertyGroup>
-		
+
 	</PropertyGroup>
+	<ItemGroup>
+	  <Compile Remove="Common\RecipeCallbacks.cs" />
+	  <Compile Remove="Assets\Projectiles\TungstenBullet.cs" />
+	</ItemGroup>
+	<ItemGroup>
+	  <None Remove="Assets\Projectiles\TungstenBullet.png" />
+	  <None Remove="TODO.txt" />
+	</ItemGroup>
 
 	<!-- References -->
-	<ItemGroup>
-		
-	</ItemGroup>
 
 </Project>

@@ -1,3 +1,4 @@
-displayName = Hamelin&#39;s Ashtray
-author = Glutto
+author = [c/ffbe98:Glutto]
+displayName = [c/ffbe98:Hamelin's Ashtray]
 version = 0.1
+buildIgnore = .git/*, .vs/*, Properties/*, .gitattributes, .gitignore, *.user, TODO.txt
