@@ -15,7 +15,7 @@ namespace HamelinsAshtray.Common.GlobalItems
         }
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips) =>
-            TooltipsUtil.AddTooltipOfChanges(tooltips, "Item was resprite\nAt first crafting, bullets are given");
+            TooltipsUtil.ShowTooltipWhileShiftIsClamped(tooltips, "Item was resprite\nAt first crafting, bullets are given");
 
         public override void AddRecipes()
         {

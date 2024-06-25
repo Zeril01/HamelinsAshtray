@@ -13,7 +13,7 @@ namespace HamelinsAshtray.Common.GlobalItems
         }
 
         public override void ModifyTooltips(Item item, System.Collections.Generic.List<TooltipLine> tooltips) =>
-            TooltipsUtil.AddTooltipOfChanges(tooltips, "Projectile was resprite");
+            TooltipsUtil.ShowTooltipWhileShiftIsClamped(tooltips, "Projectile was resprite");
     }
 
     public class TungstenBullet : ModProjectile
