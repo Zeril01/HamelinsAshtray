@@ -1,1 +1,15 @@
 Projectiles.TungstenBullet.DisplayName: Tungsten Bullet
+
+Items: {
+	AmberFlamingPistol: {
+		DisplayName: Amber Flaming Pistol
+		Tooltip: Any bullet type can be imbued when fired from this gun
+	}
+}
+
+Buffs: {
+	AmberFireDebuff: {
+		DisplayName: Amber Fire Debuff
+		Description: Slowly losing life
+	}
+}

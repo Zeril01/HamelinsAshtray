@@ -7,6 +7,6 @@
         public override void SetDefaults(Item item) => item.StatsModifiedBy.Add(Mod);
 
         public override void ModifyTooltips(Item item, System.Collections.Generic.List<TooltipLine> tooltips) =>
-            TooltipsUtil.ShowTooltipWhileShiftIsClamped(tooltips, "Always available from Merchant");
+            Utilities.HamelinsAshtrayUtils.ShowTooltipWhileShiftIsClamped(tooltips, "Always available from Merchant");
     }
 }
