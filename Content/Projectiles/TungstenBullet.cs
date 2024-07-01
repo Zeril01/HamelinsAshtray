@@ -12,6 +12,16 @@ namespace HamelinsAshtray.Content.Projectiles
             AIType = ProjectileID.Bullet;
         }
 
+        public override bool PreAI()
+        {
+            if (!Main.dedServ && Projectile.timeLeft < 597 && Main.rand.NextBool(6))
+            {
+                Dust dust = Dust.NewDustPerfect(Projectile.Center, DustID.SilverFlame, Projectile.velocity * 0f, 100, new Color(192, 224, 197), 1.2f);
+                dust.noGravity = true;
+            }
+            return true;
+        }
+
         public override Color? GetAlpha(Color lightColor) => Color.White * Projectile.Opacity;
 
         public override void OnKill(int timeLeft)

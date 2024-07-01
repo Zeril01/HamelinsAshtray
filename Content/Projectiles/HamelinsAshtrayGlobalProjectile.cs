@@ -11,7 +11,7 @@
             {
                 if (projectile.wet) amberFireBullet = false;
 
-                Dust dust = Dust.NewDustPerfect(projectile.Center, DustID.OrangeTorch, projectile.velocity * Main.rand.NextFloat(0.25f, 0.76f));
+                Dust dust = Dust.NewDustPerfect(projectile.Center, DustID.OrangeTorch, projectile.velocity * Main.rand.NextFloat(0.25f, 0.76f), 100);
                 dust.noGravity = true;
             }
         }
