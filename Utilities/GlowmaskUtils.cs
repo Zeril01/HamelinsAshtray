@@ -44,7 +44,7 @@ namespace HamelinsAshtray.Utilities
             info.DrawDataCache.Add(new DrawData(texture, new Vector2((int)(info.ItemLocation.X - Main.screenPosition.X + offset.X), (int)(info.ItemLocation.Y - Main.screenPosition.Y + offset.Y)), texture.Bounds, Color.White * ((255f - item.alpha) / 255f), info.drawPlayer.itemRotation + rotOffset, origin, item.scale, info.playerEffect, 0));
         }
 
-        public static void DrawItemGlowMaskWorld(SpriteBatch spriteBatch, Item item, Texture2D texture, float rotation, float scale) =>
+        public static void DrawItemGlowMaskWorld(Item item, float rotation, float scale, Texture2D texture) =>
             Main.spriteBatch.Draw(texture, new Vector2(item.position.X - Main.screenPosition.X + item.width / 2, item.position.Y - Main.screenPosition.Y + item.height - (texture.Height / 2)), new Rectangle(0, 0, texture.Width, texture.Height), Color.White * ((255f - item.alpha) / 255f), rotation, new Vector2(texture.Width / 2, texture.Height / 2), scale, SpriteEffects.None, 0f);
     }
 }

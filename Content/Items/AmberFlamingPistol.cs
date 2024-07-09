@@ -15,8 +15,7 @@ namespace HamelinsAshtray.Content.Items
             Item.CloneDefaults(ItemID.FlintlockPistol);
 
             Item.StatsModifiedBy.Clear();
-            Item.value = Item.sellPrice(silver: 50);
-            Item.rare = ItemRarityID.Blue;
+            Item.value = Item.sellPrice(silver: 55);
         }
 
         public override bool Shoot(Player player, Terraria.DataStructures.EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
@@ -31,7 +30,7 @@ namespace HamelinsAshtray.Content.Items
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
-            GlowmaskUtils.DrawItemGlowMaskWorld(spriteBatch, Item, ModContent.Request<Texture2D>(Texture + "Glow").Value, rotation, scale);
+            GlowmaskUtils.DrawItemGlowMaskWorld(Item, rotation, scale, ModContent.Request<Texture2D>(Texture + "Glow").Value);
             Lighting.AddLight(Item.Center, TorchID.Orange);
         }
 

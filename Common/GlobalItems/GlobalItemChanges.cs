@@ -4,24 +4,21 @@ namespace HamelinsAshtray.Common.GlobalItems
 {
     public class GlobalItemChanges : GlobalItem
     {
-        public override bool AppliesToEntity(Item item, bool lateInstantiation) => item.type is ItemID.FlintlockPistol or ItemID.WormholePotion
-            or ItemID.TungstenBullet or ItemID.CrystalBullet or ItemID.CursedBullet or ItemID.IchorBullet;
+        public override bool AppliesToEntity(Item item, bool lateInstantiation) => item.type is ItemID.IceBlade or ItemID.FlintlockPistol
+            or ItemID.TungstenBullet or ItemID.CrystalBullet or ItemID.CursedBullet or ItemID.IchorBullet or ItemID.IceRod or ItemID.WormholePotion;
 
+        public override void SetStaticDefaults() => Item.staff[ItemID.IceRod] = true;
+        
         public override void SetDefaults(Item item)
         {
-            if (item.type is ItemID.FlintlockPistol or ItemID.WormholePotion or ItemID.TungstenBullet or ItemID.CrystalBullet
-                or ItemID.CursedBullet or ItemID.IchorBullet) item.StatsModifiedBy.Add(Mod);
+            if (item.type is ItemID.IceBlade or ItemID.FlintlockPistol or ItemID.TungstenBullet or ItemID.CrystalBullet
+                or ItemID.CursedBullet or ItemID.IchorBullet or ItemID.IceRod or ItemID.WormholePotion) item.StatsModifiedBy.Add(Mod);
             
-            if (item.type == ItemID.FlintlockPistol)
-            {
-                item.value = Item.sellPrice(silver: 5, copper: 50);
-                item.rare = ItemRarityID.White;
-            }
+            if (item.type == ItemID.FlintlockPistol) item.value = Item.sellPrice(silver: 6);
+            
+            if (item.type == ItemID.TungstenBullet) item.shoot = ModContent.ProjectileType<Content.Projectiles.TungstenBullet>();
 
-            if (item.type == ItemID.TungstenBullet)
-            {
-                item.shoot = ModContent.ProjectileType<Content.Projectiles.TungstenBullet>();
-            }
+            if (item.type == ItemID.IceRod) item.useStyle = ItemUseStyleID.Shoot;
         }
 
         public override void AddRecipes()
@@ -60,12 +57,16 @@ namespace HamelinsAshtray.Common.GlobalItems
                 }
             }
 
-            if (item.type == ItemID.FlintlockPistol) ShowTooltipWhileShiftIsClamped("Item was resprite\nAt first crafting, bullets are given");
+            if (item.type == ItemID.IceBlade) ShowTooltipWhileShiftIsClamped("Inflicts target with Frostburn");
 
-            if (item.type == ItemID.WormholePotion) ShowTooltipWhileShiftIsClamped("Always available from Merchant");
+            if (item.type == ItemID.FlintlockPistol) ShowTooltipWhileShiftIsClamped("Item was resprite\nAt first crafting, bullets are given");
 
             if (item.type is ItemID.TungstenBullet or ItemID.CrystalBullet or ItemID.CursedBullet or ItemID.IchorBullet)
                 ShowTooltipWhileShiftIsClamped("Projectile was resprite");
+
+            if (item.type == ItemID.IceRod) ShowTooltipWhileShiftIsClamped("Use style was changed\nInflicts target with Frostbite");
+
+            if (item.type == ItemID.WormholePotion) ShowTooltipWhileShiftIsClamped("Always available from Merchant");
         }
     }
 }
