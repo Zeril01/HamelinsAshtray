@@ -1,4 +1,4 @@
-﻿namespace HamelinsAshtray
+﻿namespace HamelinsAshtray.Common.GlobalNPCs
 {
     public class HamelinsAshtrayGlobalNPC : GlobalNPC
     {

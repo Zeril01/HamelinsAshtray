@@ -1,5 +1,4 @@
-﻿using HamelinsAshtray.Utilities;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace HamelinsAshtray.Content.Items
@@ -30,7 +29,7 @@ namespace HamelinsAshtray.Content.Items
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
-            GlowmaskUtils.DrawItemGlowMaskWorld(Item, rotation, scale, ModContent.Request<Texture2D>(Texture + "Glow").Value);
+            ItemGlowmaskUtils.DrawItemGlowMaskWorld(Item, rotation, scale, ModContent.Request<Texture2D>(Texture + "Glow").Value);
             Lighting.AddLight(Item.Center, TorchID.Orange);
         }
 

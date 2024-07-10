@@ -16,7 +16,7 @@ namespace HamelinsAshtray.Content.Projectiles
         {
             if (!Main.dedServ && Projectile.timeLeft < 597 && Main.rand.NextBool(6))
             {
-                Dust dust = Dust.NewDustPerfect(Projectile.Center, DustID.SilverFlame, Projectile.velocity * 0f, 100, new Color(192, 224, 197), 1.2f);
+                Dust dust = Dust.NewDustPerfect(Projectile.Center, DustID.SilverFlame, Projectile.velocity * 0f, 100, new(192, 224, 197), 1.2f);
                 dust.noGravity = true;
             }
             return true;

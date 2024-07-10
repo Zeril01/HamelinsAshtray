@@ -23,7 +23,7 @@ namespace HamelinsAshtray.Common.GlobalItems
 
         public override void AddRecipes()
         {
-            HamelinsAshtrayPlayer hap = new();
+            Players.HamelinsAshtrayPlayer hap = new();
 
             Recipe.Create(ItemID.FlintlockPistol)
                   .AddRecipeGroup(RecipeGroupID.IronBar, 10)

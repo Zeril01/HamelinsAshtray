@@ -1,6 +1,4 @@
-﻿using HamelinsAshtray.Utilities;
-
-namespace HamelinsAshtray
+﻿namespace HamelinsAshtray.Common.Players
 {
     public class HamelinsAshtrayPlayer : ModPlayer
     {
