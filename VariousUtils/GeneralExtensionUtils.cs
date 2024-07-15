@@ -1,7 +1,7 @@
 ﻿using HamelinsAshtray.Common.GlobalNPCs;
-using HamelinsAshtray.Content.Projectiles;
+using HamelinsAshtray.Common.GlobalProjectiles;
 
-namespace HamelinsAshtray
+namespace HamelinsAshtray.VariousUtils
 {
     public static class GeneralExtensionUtils
     {

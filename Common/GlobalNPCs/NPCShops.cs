@@ -6,7 +6,7 @@
         {
             if (shop.NpcType == NPCID.Merchant)
             {
-                if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod) && shop.TryGetEntry(ItemID.WormholePotion, out NPCShop.Entry entry)) entry.Disable();
+                if (Systems.ModDetector.calamityIsEnabled && shop.TryGetEntry(ItemID.WormholePotion, out NPCShop.Entry entry)) entry.Disable();
                 shop.InsertBefore(ItemID.WoodenArrow, ItemID.WormholePotion, Condition.Multiplayer);
             }
 

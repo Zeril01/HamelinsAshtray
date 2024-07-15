@@ -4,21 +4,34 @@ namespace HamelinsAshtray.Common.GlobalItems
 {
     public class GlobalItemChanges : GlobalItem
     {
-        public override bool AppliesToEntity(Item item, bool lateInstantiation) => item.type is ItemID.IceBlade or ItemID.FlintlockPistol
-            or ItemID.TungstenBullet or ItemID.CrystalBullet or ItemID.CursedBullet or ItemID.IchorBullet or ItemID.IceRod or ItemID.WormholePotion;
+        public override bool InstancePerEntity => true;
 
         public override void SetStaticDefaults() => Item.staff[ItemID.IceRod] = true;
         
         public override void SetDefaults(Item item)
         {
-            if (item.type is ItemID.IceBlade or ItemID.FlintlockPistol or ItemID.TungstenBullet or ItemID.CrystalBullet
-                or ItemID.CursedBullet or ItemID.IchorBullet or ItemID.IceRod or ItemID.WormholePotion) item.StatsModifiedBy.Add(Mod);
-            
-            if (item.type == ItemID.FlintlockPistol) item.value = Item.sellPrice(silver: 6);
-            
-            if (item.type == ItemID.TungstenBullet) item.shoot = ModContent.ProjectileType<Content.Projectiles.TungstenBullet>();
+            switch (item.type)
+            {
+                case ItemID.IceBlade:
+                case ItemID.CrystalBullet:
+                case ItemID.CursedBullet:
+                case ItemID.IchorBullet:
+                case ItemID.WormholePotion:
+                    item.StatsModifiedBy.Add(Mod);
+                    break;
 
-            if (item.type == ItemID.IceRod) item.useStyle = ItemUseStyleID.Shoot;
+                case ItemID.FlintlockPistol:
+                    item.value = Item.sellPrice(silver: 6);
+                    goto case ItemID.WormholePotion;
+
+                case ItemID.TungstenBullet:
+                    item.shoot = ModContent.ProjectileType<Content.Projectiles.TungstenBullet>();
+                    goto case ItemID.WormholePotion;
+
+                case ItemID.IceRod:
+                    item.useStyle = ItemUseStyleID.Shoot;
+                    goto case ItemID.WormholePotion;
+            }
         }
 
         public override void AddRecipes()
@@ -45,28 +58,35 @@ namespace HamelinsAshtray.Common.GlobalItems
         {
             void ShowTooltipWhileShiftIsClamped(string text)
             {
-                var tooltip = new TooltipLine(ModLoader.GetMod("HamelinsAshtray"), "ModifiedByHamelinsAshtray", text)
-                { OverrideColor = new Microsoft.Xna.Framework.Color(255, 190, 152) }; // PANTONE - Peach Fuzz
-
-                if (Main.keyState.PressingShift())
-                {
-                    for (int i = tooltips.Count - 1; i >= tooltips.Count / 2; i--)
-                    {
-                        if (tooltips[i].Mod == "Terraria" && tooltips[i].Name == "ModifiedByMods") tooltips.Insert(i + 1, tooltip);
-                    }
-                }
+                if (Main.keyState.PressingShift()) tooltips.Insert(VariousUtils.TooltipUtils.FindIndexByTooltipName(tooltips, "ModifiedByMods"),
+                    new(Mod, "ModifiedByHamelinsAshtray", text) { OverrideColor = new Microsoft.Xna.Framework.Color(255, 190, 152) }); // PANTONE - Peach Fuzz
             }
 
-            if (item.type == ItemID.IceBlade) ShowTooltipWhileShiftIsClamped("Inflicts target with Frostburn");
+            switch (item.type)
+            {
+                case ItemID.IceBlade:
+                    ShowTooltipWhileShiftIsClamped("Inflicts target with Frostburn");
+                    break;
 
-            if (item.type == ItemID.FlintlockPistol) ShowTooltipWhileShiftIsClamped("Item was resprite\nAt first crafting, bullets are given");
+                case ItemID.FlintlockPistol:
+                    ShowTooltipWhileShiftIsClamped("Item was resprite\nAt first crafting, bullets are given");
+                    break;
 
-            if (item.type is ItemID.TungstenBullet or ItemID.CrystalBullet or ItemID.CursedBullet or ItemID.IchorBullet)
-                ShowTooltipWhileShiftIsClamped("Projectile was resprite");
+                case ItemID.TungstenBullet:
+                case ItemID.CrystalBullet:
+                case ItemID.CursedBullet:
+                case ItemID.IchorBullet:
+                    ShowTooltipWhileShiftIsClamped("Projectile was resprite");
+                    break;
 
-            if (item.type == ItemID.IceRod) ShowTooltipWhileShiftIsClamped("Use style was changed\nInflicts target with Frostbite");
+                case ItemID.IceRod:
+                    ShowTooltipWhileShiftIsClamped("Use style was changed\nInflicts target with Frostbite");
+                    break;
 
-            if (item.type == ItemID.WormholePotion) ShowTooltipWhileShiftIsClamped("Always available from Merchant");
+                case ItemID.WormholePotion:
+                    ShowTooltipWhileShiftIsClamped("Always available from Merchant");
+                    break;
+            }
         }
     }
 }

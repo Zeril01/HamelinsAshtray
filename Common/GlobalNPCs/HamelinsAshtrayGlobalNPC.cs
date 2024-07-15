@@ -9,21 +9,17 @@
 
         public override void UpdateLifeRegen(NPC npc, ref int damage)
         {
-            if (amberFireDebuff)
+            void ApplyDoT(int dmgPerSec, int displayableDmg, ref int dmg)
             {
                 if (npc.lifeRegen > 0) npc.lifeRegen = 0;
-                npc.lifeRegen -= 6 * 2;
+                npc.lifeRegen -= dmgPerSec * 2;
 
-                if (damage < 2) damage = 2;
+                if (dmg < displayableDmg) dmg = displayableDmg;
             }
 
-            if (amberFireDebuff && npc.oiled)
-            {
-                if (npc.lifeRegen > 0) npc.lifeRegen = 0;
-                npc.lifeRegen -= 25 * 2;
-
-                if (damage < 10) damage = 10;
-            }
+            if (amberFireDebuff) ApplyDoT(8, 2, ref damage);
+            
+            if (npc.oiled && amberFireDebuff) ApplyDoT(25, 10, ref damage);
         }
 
         public override void DrawEffects(NPC npc, ref Microsoft.Xna.Framework.Color drawColor)

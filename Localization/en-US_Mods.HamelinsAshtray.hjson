@@ -1,9 +1,17 @@
-Projectiles.TungstenBullet.DisplayName: Tungsten Bullet
+Projectiles: {
+	TungstenBullet.DisplayName: Tungsten Bullet
+	Ignition.DisplayName: Ignition
+}
 
 Items: {
 	AmberFlamingPistol: {
 		DisplayName: Amber Flaming Pistol
 		Tooltip: Any bullet type can be imbued when fired from this gun
+	}
+
+	Ignition: {
+		DisplayName: Ignition
+		Tooltip: Inflict Frostburn on impact
 	}
 }
 

@@ -1,4 +1,6 @@
-﻿namespace HamelinsAshtray.Content.Buffs
+﻿using HamelinsAshtray.VariousUtils;
+
+namespace HamelinsAshtray.Content.Buffs
 {
     public class AmberFireDebuff : ModBuff
     {

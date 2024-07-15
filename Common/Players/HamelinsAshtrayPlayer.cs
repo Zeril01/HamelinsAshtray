@@ -1,4 +1,6 @@
-﻿namespace HamelinsAshtray.Common.Players
+﻿using HamelinsAshtray.VariousUtils;
+
+namespace HamelinsAshtray.Common.Players
 {
     public class HamelinsAshtrayPlayer : ModPlayer
     {
@@ -8,7 +10,7 @@
         {
             if (Main.myPlayer != Player.whoAmI) return;
 
-            Content.Projectiles.HamelinsAshtrayGlobalProjectile hagl = proj.HamelinsAshtray();
+            GlobalProjectiles.HamelinsAshtrayGlobalProjectile hagl = proj.HamelinsAshtray();
             if (hagl.amberFireBullet) target.AddBuff(ModContent.BuffType<Content.Buffs.AmberFireDebuff>(), 90);
         }
     }

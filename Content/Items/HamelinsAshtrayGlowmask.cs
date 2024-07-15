@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Terraria.DataStructures;
 
-namespace HamelinsAshtray
+namespace HamelinsAshtray.Content.Items
 {
     public class HamelinsAshtrayGlowmask : ModPlayer
     {
@@ -17,7 +17,7 @@ namespace HamelinsAshtray
 
         protected override void Draw(ref PlayerDrawSet drawInfo)
         {
-            if (drawInfo.drawPlayer.HeldItem.type >= ItemID.Count && HamelinsAshtrayGlowmask.ItemGlowMask.TryGetValue(drawInfo.drawPlayer.HeldItem.type, out Texture2D textureItem) && (drawInfo.drawPlayer.itemTime > 0 || drawInfo.drawPlayer.HeldItem.useStyle != ItemUseStyleID.None)) Content.Items.ItemGlowmaskUtils.DrawItemGlowMask(textureItem, drawInfo);
+            if (drawInfo.drawPlayer.HeldItem.type >= ItemID.Count && HamelinsAshtrayGlowmask.ItemGlowMask.TryGetValue(drawInfo.drawPlayer.HeldItem.type, out Texture2D textureItem) && (drawInfo.drawPlayer.itemTime > 0 || drawInfo.drawPlayer.HeldItem.useStyle != ItemUseStyleID.None)) ItemGlowmaskUtils.DrawItemGlowMask(textureItem, drawInfo);
         }
     }
 }

@@ -27,7 +27,7 @@
 
         public override void OnHitNPC(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (projectile.type == ProjectileID.IceBolt) target.AddBuff(BuffID.Frostburn, 90);
+            if (projectile.type == ProjectileID.IceBolt && !Systems.ModDetector.calamityIsEnabled) target.AddBuff(BuffID.Frostburn, 90);
 
             if (projectile.type == ProjectileID.IceBlock) target.AddBuff(BuffID.Frostburn2, 60 * 10);
         }
