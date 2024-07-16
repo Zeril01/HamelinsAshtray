@@ -21,16 +21,19 @@ namespace HamelinsAshtray.Common.GlobalItems
                     break;
 
                 case ItemID.FlintlockPistol:
+                    item.StatsModifiedBy.Add(Mod);
                     item.value = Item.sellPrice(silver: 6);
-                    goto case ItemID.WormholePotion;
+                    break;
 
                 case ItemID.TungstenBullet:
+                    item.StatsModifiedBy.Add(Mod);
                     item.shoot = ModContent.ProjectileType<Content.Projectiles.TungstenBullet>();
-                    goto case ItemID.WormholePotion;
+                    break;
 
                 case ItemID.IceRod:
+                    item.StatsModifiedBy.Add(Mod);
                     item.useStyle = ItemUseStyleID.Shoot;
-                    goto case ItemID.WormholePotion;
+                    break;
             }
         }
 

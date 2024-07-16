@@ -13,9 +13,10 @@ namespace HamelinsAshtray.Content.Items.Yoyos
             {
                 if (lines[i].Mod == "HamelinsAshtray" && lines[i].Name == "EmptyForLogo")
                 {
-                    Main.spriteBatch.Draw(ModContent.Request<Texture2D>("HamelinsAshtray/Assets/UnprldLogo").Value,
+                    Main.spriteBatch.Draw(ModContent.Request<Texture2D>(HamelinsAshtray.AssetPath + "UnprldLogo").Value,
                         new(lines[i].X - 1, lines[i].Y - 1), null,
-                        new(Main.mouseTextColor, Main.mouseTextColor, Main.mouseTextColor, Main.mouseTextColor), 0f, default, 1f, SpriteEffects.None, 0f);
+                        new(Main.mouseTextColor, Main.mouseTextColor, Main.mouseTextColor, Main.mouseTextColor),
+                        0f, default, 1f, SpriteEffects.None, 0f);
                 }
             }
         }

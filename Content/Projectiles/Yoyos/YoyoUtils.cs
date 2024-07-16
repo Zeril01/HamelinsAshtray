@@ -1,6 +1,6 @@
-﻿namespace HamelinsAshtray.Content.Projectiles
+﻿namespace HamelinsAshtray.Content.Projectiles.Yoyos
 {
-    public static class ProjectileUtils
+    public static class YoyoUtils
     {
         /// <summary>
         /// 
@@ -14,6 +14,15 @@
             ProjectileID.Sets.YoyosLifeTimeMultiplier[projType] = lifeTimeInSec;
             ProjectileID.Sets.YoyosMaximumRange[projType] = maxRange;
             ProjectileID.Sets.YoyosTopSpeed[projType] = topSpeed;
+        }
+
+        public static void SpawnDusts(Microsoft.Xna.Framework.Vector2 position, int width, int height, int type)
+        {
+            if (Main.rand.NextBool(10))
+            {
+                int dust = Dust.NewDust(position, width, height, type, 0f, 0f, 100);
+                Main.dust[dust].noGravity = true;
+            }
         }
     }
 }

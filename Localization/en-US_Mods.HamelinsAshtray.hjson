@@ -1,6 +1,7 @@
 Projectiles: {
 	TungstenBullet.DisplayName: Tungsten Bullet
-	Ignition.DisplayName: Ignition
+	Corruption.DisplayName: Corruption
+	Elimination.DisplayName: Elimination
 }
 
 Items: {
@@ -9,9 +10,14 @@ Items: {
 		Tooltip: Any bullet type can be imbued when fired from this gun
 	}
 
-	Ignition: {
-		DisplayName: Ignition
+	Corruption: {
+		DisplayName: Corruption
 		Tooltip: Inflict Frostburn on impact
+	}
+
+	Elimination: {
+		DisplayName: Elimination
+		Tooltip: ""
 	}
 }
 
