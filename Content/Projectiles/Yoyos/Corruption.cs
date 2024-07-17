@@ -6,11 +6,11 @@
 
         public override void SetDefaults() => Projectile.CloneDefaults(ProjectileID.Rally);
 
-        public override void PostAI() => YoyoUtils.SpawnDusts(Projectile.position, Projectile.width, Projectile.height, DustID.IceRod);
+        public override void PostAI() => YoyoUtils.SpawnDusts(Projectile.position, Projectile.width, Projectile.height, DustID.IceTorch);
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (Main.rand.NextBool(3)) target.AddBuff(BuffID.Frostburn, 60 * 2);
+            if (Main.rand.NextBool(3)) target.AddBuff(BuffID.Frostburn, Main.rand.Next(60, 181));
         }
     }
 }

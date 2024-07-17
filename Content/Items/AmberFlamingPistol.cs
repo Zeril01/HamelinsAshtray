@@ -8,7 +8,7 @@ namespace HamelinsAshtray.Content.Items
     {
         public override string Texture => HamelinsAshtray.AssetPath + "Items/AmberFlamingPistol";
 
-        public override void SetStaticDefaults() => HamelinsAshtrayGlowmask.AddGlowMask(Item.type, Texture + "Glow");
+        public override void SetStaticDefaults() => HamelinsAshtrayGlowmask.AddGlowmask(Item.type, Texture + "_Glow");
         
         public override void SetDefaults()
         {
@@ -30,7 +30,7 @@ namespace HamelinsAshtray.Content.Items
         public override Vector2? HoldoutOffset() => new(6f, 2f);
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI) =>
-            ItemGlowmaskUtils.DrawItemGlowMaskWorld(Item, rotation, scale, ModContent.Request<Texture2D>(Texture + "Glow").Value);
+            ItemGlowmaskUtils.DrawItemGlowmaskInWorld(Item, rotation, scale, ModContent.Request<Texture2D>(Texture + "_Glow").Value);
 
         public override void AddRecipes() => CreateRecipe().
             AddIngredient(ItemID.FlintlockPistol).

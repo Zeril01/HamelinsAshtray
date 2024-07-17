@@ -11,6 +11,7 @@ namespace HamelinsAshtray.Common.GlobalNPCs
             
             AddYoyo(ModContent.ItemType<Corruption>(), new ModConditions.ModYoyosCorruption());
             AddYoyo(ModContent.ItemType<Elimination>(), new ModConditions.ModYoyosElimination());
+            AddYoyo(ModContent.ItemType<Abduction>(), new ModConditions.ModYoyosAbduction());
         }
     }
 }

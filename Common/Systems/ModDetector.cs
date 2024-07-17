@@ -1,6 +1,6 @@
 ﻿namespace HamelinsAshtray.Common.Systems
 {
-    public class ModDetector : ModSystem
+    internal class ModDetector : ModSystem
     {
         public static bool calamityIsEnabled;
 

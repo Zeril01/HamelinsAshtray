@@ -27,9 +27,24 @@
 
         public override void OnHitNPC(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (projectile.type == ProjectileID.IceBolt && !Systems.ModDetector.calamityIsEnabled) target.AddBuff(BuffID.Frostburn, 90);
+            switch (projectile.type)
+            {
+                case ProjectileID.IceBolt:
+                    if (!Systems.ModDetector.calamityIsEnabled) target.AddBuff(BuffID.Frostburn, 90);
+                    break;
 
-            if (projectile.type == ProjectileID.IceBlock) target.AddBuff(BuffID.Frostburn2, 60 * 10);
+                case ProjectileID.JungleYoyo:
+                    if (Main.rand.NextBool(3)) target.AddBuff(BuffID.Poisoned, Main.rand.Next(60, 181));
+                    break;
+
+                case ProjectileID.Yelets:
+                    if (Main.rand.NextBool(2)) target.AddBuff(BuffID.Poisoned, Main.rand.Next(300, 901));
+                    break;
+
+                case ProjectileID.IceBlock:
+                    target.AddBuff(BuffID.Frostburn2, 600);
+                    break;
+            }
         }
     }
 }

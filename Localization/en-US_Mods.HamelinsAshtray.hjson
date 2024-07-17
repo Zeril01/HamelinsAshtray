@@ -2,6 +2,7 @@ Projectiles: {
 	TungstenBullet.DisplayName: Tungsten Bullet
 	Corruption.DisplayName: Corruption
 	Elimination.DisplayName: Elimination
+	Abduction.DisplayName: Abduction
 }
 
 Items: {
@@ -17,6 +18,11 @@ Items: {
 
 	Elimination: {
 		DisplayName: Elimination
+		Tooltip: Inflict Sapphire Fire on impact
+	}
+
+	Abduction: {
+		DisplayName: Abduction
 		Tooltip: ""
 	}
 }
@@ -24,6 +30,11 @@ Items: {
 Buffs: {
 	AmberFireDebuff: {
 		DisplayName: Amber Fire Debuff
+		Description: Slowly losing life
+	}
+
+	SapphireFireDebuff: {
+		DisplayName: Sapphire Fire Debuff
 		Description: Slowly losing life
 	}
 }

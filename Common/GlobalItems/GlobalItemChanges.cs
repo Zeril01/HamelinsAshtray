@@ -13,6 +13,8 @@ namespace HamelinsAshtray.Common.GlobalItems
             switch (item.type)
             {
                 case ItemID.IceBlade:
+                case ItemID.JungleYoyo:
+                case ItemID.Yelets:
                 case ItemID.CrystalBullet:
                 case ItemID.CursedBullet:
                 case ItemID.IchorBullet:
@@ -65,10 +67,16 @@ namespace HamelinsAshtray.Common.GlobalItems
                     new(Mod, "ModifiedByHamelinsAshtray", text) { OverrideColor = new Microsoft.Xna.Framework.Color(255, 190, 152) }); // PANTONE - Peach Fuzz
             }
 
+            string inflict = "Inflicts target with";
             switch (item.type)
             {
                 case ItemID.IceBlade:
-                    ShowTooltipWhileShiftIsClamped("Inflicts target with Frostburn");
+                    ShowTooltipWhileShiftIsClamped($"{inflict} Frostburn");
+                    break;
+
+                case ItemID.JungleYoyo:
+                case ItemID.Yelets:
+                    ShowTooltipWhileShiftIsClamped($"{inflict} Poisoned");
                     break;
 
                 case ItemID.FlintlockPistol:
@@ -83,7 +91,7 @@ namespace HamelinsAshtray.Common.GlobalItems
                     break;
 
                 case ItemID.IceRod:
-                    ShowTooltipWhileShiftIsClamped("Use style was changed\nInflicts target with Frostbite");
+                    ShowTooltipWhileShiftIsClamped($"Use style was changed\n{inflict} Frostbite");
                     break;
 
                 case ItemID.WormholePotion:

@@ -8,7 +8,8 @@ namespace HamelinsAshtray.Content.Items
         internal static readonly System.Collections.Generic.Dictionary<int, Texture2D> ItemGlowMask = [];
         internal new static void Unload() => ItemGlowMask.Clear();
 
-        public static void AddGlowMask(int itemType, string texturePath) => ItemGlowMask[itemType] = ModContent.Request<Texture2D>(texturePath, ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+        public static void AddGlowmask(int itemType, string texturePath) =>
+            ItemGlowMask[itemType] = ModContent.Request<Texture2D>(texturePath, ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
     }
 
     public class HamelinsAshtrayGlowMaskItemLayer : PlayerDrawLayer
@@ -17,7 +18,10 @@ namespace HamelinsAshtray.Content.Items
 
         protected override void Draw(ref PlayerDrawSet drawInfo)
         {
-            if (drawInfo.drawPlayer.HeldItem.type >= ItemID.Count && HamelinsAshtrayGlowmask.ItemGlowMask.TryGetValue(drawInfo.drawPlayer.HeldItem.type, out Texture2D textureItem) && (drawInfo.drawPlayer.itemTime > 0 || drawInfo.drawPlayer.HeldItem.useStyle != ItemUseStyleID.None)) ItemGlowmaskUtils.DrawItemGlowMask(textureItem, drawInfo);
+            if (drawInfo.drawPlayer.HeldItem.type >= ItemID.Count
+                && HamelinsAshtrayGlowmask.ItemGlowMask.TryGetValue(drawInfo.drawPlayer.HeldItem.type, out Texture2D textureItem)
+                && (drawInfo.drawPlayer.itemTime > 0 || drawInfo.drawPlayer.HeldItem.useStyle != ItemUseStyleID.None))
+                ItemGlowmaskUtils.DrawItemGlowmask(textureItem, drawInfo);
         }
     }
 }

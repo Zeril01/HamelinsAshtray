@@ -31,5 +31,19 @@ namespace HamelinsAshtray.Common.GlobalNPCs
 
             public string GetConditionDescription() => "Drops in Desert biome before Hardmode";
         }
+
+        public class ModYoyosAbduction : IItemDropRuleCondition, IProvideItemConditionDescription
+        {
+            public bool CanDrop(DropAttemptInfo info)
+            {
+                if (!Main.hardMode && info.npc.HasPlayerTarget && info.player.ZoneGlowshroom && info.npc.lifeMax > 5 && !info.npc.friendly && info.npc.value > 0f)
+                    return !info.IsInSimulation;
+                return false;
+            }
+
+            public bool CanShowItemDropInUI() => false;
+
+            public string GetConditionDescription() => "Drops in Glowing Mushroom biome before Hardmode";
+        }
     }
 }

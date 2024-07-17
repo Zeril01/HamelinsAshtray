@@ -1,11 +1,13 @@
-﻿namespace HamelinsAshtray.Common.GlobalNPCs
+﻿using HamelinsAshtray.Content.Buffs;
+
+namespace HamelinsAshtray.Common.GlobalNPCs
 {
     public class HamelinsAshtrayGlobalNPC : GlobalNPC
     {
         public override bool InstancePerEntity => true;
-        public bool amberFireDebuff;
+        public bool sapphireFireDebuff, amberFireDebuff;
 
-        public override void ResetEffects(NPC npc) => amberFireDebuff = false;
+        public override void ResetEffects(NPC npc) => sapphireFireDebuff = amberFireDebuff = false;
 
         public override void UpdateLifeRegen(NPC npc, ref int damage)
         {
@@ -17,14 +19,18 @@
                 if (dmg < displayableDmg) dmg = displayableDmg;
             }
 
+            if (sapphireFireDebuff) ApplyDoT(4, 2, ref damage);
+
             if (amberFireDebuff) ApplyDoT(8, 2, ref damage);
-            
-            if (npc.oiled && amberFireDebuff) ApplyDoT(25, 10, ref damage);
+
+            if (npc.oiled && (sapphireFireDebuff || amberFireDebuff)) ApplyDoT(25, 10, ref damage);
         }
 
         public override void DrawEffects(NPC npc, ref Microsoft.Xna.Framework.Color drawColor)
         {
-            if (amberFireDebuff) Content.Buffs.AmberFireDebuff.DrawEffects(npc);
+            if (sapphireFireDebuff) SapphireFireDebuff.DrawEffects(npc);
+
+            if (amberFireDebuff) AmberFireDebuff.DrawEffects(npc);
         }
     }
 }

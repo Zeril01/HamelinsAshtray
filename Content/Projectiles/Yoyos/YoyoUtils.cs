@@ -18,9 +18,9 @@
 
         public static void SpawnDusts(Microsoft.Xna.Framework.Vector2 position, int width, int height, int type)
         {
-            if (Main.rand.NextBool(10))
+            if (Main.rand.NextBool(6))
             {
-                int dust = Dust.NewDust(position, width, height, type, 0f, 0f, 100);
+                int dust = Dust.NewDust(position, width, height, type);
                 Main.dust[dust].noGravity = true;
             }
         }
