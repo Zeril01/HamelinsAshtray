@@ -21,7 +21,7 @@ namespace HamelinsAshtray.Content.Items
             if (drawInfo.drawPlayer.HeldItem.type >= ItemID.Count
                 && HamelinsAshtrayGlowmask.ItemGlowMask.TryGetValue(drawInfo.drawPlayer.HeldItem.type, out Texture2D textureItem)
                 && (drawInfo.drawPlayer.itemTime > 0 || drawInfo.drawPlayer.HeldItem.useStyle != ItemUseStyleID.None))
-                ItemGlowmaskUtils.DrawItemGlowmask(textureItem, drawInfo);
+                ItemGlowmaskUtils.DrawItemGlowmask(drawInfo, textureItem);
         }
     }
 }

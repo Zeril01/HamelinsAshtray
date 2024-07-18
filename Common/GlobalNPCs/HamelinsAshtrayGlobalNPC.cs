@@ -28,7 +28,7 @@
 
         public override void DrawEffects(NPC npc, ref Microsoft.Xna.Framework.Color drawColor)
         {
-            void AddEffect(int type, int torchID)
+            void AddFireEffect(int type, int torchID)
             {
                 if (Main.rand.Next(4) < 3)
                 {
@@ -46,11 +46,11 @@
                 Lighting.AddLight(npc.Center, torchID);
             }
 
-            if (sapphireFireDebuff) AddEffect(DustID.BlueTorch, TorchID.Blue);
+            if (sapphireFireDebuff) AddFireEffect(DustID.BlueTorch, TorchID.Blue);
 
-            if (amberFireDebuff) AddEffect(DustID.OrangeTorch, TorchID.Orange);
+            if (amberFireDebuff) AddFireEffect(DustID.OrangeTorch, TorchID.Orange);
 
-            if (glowingMushroomFireDebuff) AddEffect(DustID.MushroomTorch, TorchID.Mushroom);
+            if (glowingMushroomFireDebuff) AddFireEffect(DustID.MushroomTorch, TorchID.Mushroom);
         }
     }
 }

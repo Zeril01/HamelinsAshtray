@@ -25,7 +25,7 @@
             }
         }
 
-        public static void ApplyDebuff(NPC target, int type)
+        public static void ApplyDebuffWithChance(NPC target, int type)
         {
             if (Main.rand.NextBool(3)) target.AddBuff(type, Main.rand.Next(60, 181));
         }

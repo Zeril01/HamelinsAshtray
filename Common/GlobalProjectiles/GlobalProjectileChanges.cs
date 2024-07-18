@@ -25,6 +25,15 @@
             }
         }
 
+        public override void PostAI(Projectile projectile)
+        {
+            if ((projectile.type == ProjectileID.JungleYoyo || projectile.type == ProjectileID.Yelets) && Main.rand.NextBool(6))
+            {
+                int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, DustID.Poisoned, 0f, 0f, 100);
+                Main.dust[dust].noGravity = true;
+            }
+        }
+
         public override void OnHitNPC(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)
         {
             switch (projectile.type)

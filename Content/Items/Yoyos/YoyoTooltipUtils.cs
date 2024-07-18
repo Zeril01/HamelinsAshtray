@@ -7,7 +7,7 @@ namespace HamelinsAshtray.Content.Items.Yoyos
         public static void AddEmptyTooltipForLogo(System.Collections.Generic.List<TooltipLine> tooltips) =>
             tooltips.Insert(VariousUtils.TooltipUtils.FindIndexByTooltipName(tooltips, "Knockback"), new(ModLoader.GetMod("HamelinsAshtray"), "EmptyForLogo", "\u2800"));
 
-        public static void PostDrawLogo(System.Collections.ObjectModel.ReadOnlyCollection<DrawableTooltipLine> lines)
+        public static void DrawLogo(System.Collections.ObjectModel.ReadOnlyCollection<DrawableTooltipLine> lines)
         {
             for (int i = lines.Count - 1; i >= 0; i--)
             {

@@ -16,12 +16,12 @@ namespace HamelinsAshtray.Content.Items.Yoyos
 
         public override void PostDrawInWorld(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
-            Lighting.AddLight(Item.position, new Vector3(0f, 0.1f / 2, 1.3f / 2));
             if (!Item.wet) YoyoUtils.SpawnDusts(Item.position, Item.width, Item.height, DustID.BlueTorch);
+            Lighting.AddLight(Item.position, Vector3.Divide(new(0f, 0.1f, 1.3f), 2f));
         }
 
         public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> tooltips) => YoyoTooltipUtils.AddEmptyTooltipForLogo(tooltips);
 
-        public override void PostDrawTooltip(System.Collections.ObjectModel.ReadOnlyCollection<DrawableTooltipLine> lines) => YoyoTooltipUtils.PostDrawLogo(lines);
+        public override void PostDrawTooltip(System.Collections.ObjectModel.ReadOnlyCollection<DrawableTooltipLine> lines) => YoyoTooltipUtils.DrawLogo(lines);
     }
 }

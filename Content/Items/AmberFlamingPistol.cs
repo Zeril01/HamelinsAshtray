@@ -30,7 +30,7 @@ namespace HamelinsAshtray.Content.Items
         public override Vector2? HoldoutOffset() => new(6f, 2f);
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI) =>
-            ItemGlowmaskUtils.DrawItemGlowmaskInWorld(Item, rotation, scale, ModContent.Request<Texture2D>(Texture + "_Glow").Value);
+            ItemGlowmaskUtils.DrawItemGlowmaskInWorld(ModContent.Request<Texture2D>(Texture + "_Glow").Value, Item, rotation, scale);
 
         public override void AddRecipes() => CreateRecipe().
             AddIngredient(ItemID.FlintlockPistol).

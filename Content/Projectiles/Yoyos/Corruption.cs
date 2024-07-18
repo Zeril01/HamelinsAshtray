@@ -8,6 +8,6 @@
 
         public override void PostAI() => YoyoUtils.SpawnDusts(Projectile.position, Projectile.width, Projectile.height, DustID.IceTorch);
 
-        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => YoyoUtils.ApplyDebuff(target, BuffID.Frostburn);
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => YoyoUtils.ApplyDebuffWithChance(target, BuffID.Frostburn);
     }
 }

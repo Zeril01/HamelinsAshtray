@@ -19,7 +19,7 @@
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (notWet) YoyoUtils.ApplyDebuff(target, ModContent.BuffType<Buffs.SapphireFireDebuff>());
+            if (notWet) YoyoUtils.ApplyDebuffWithChance(target, ModContent.BuffType<Buffs.SapphireFireDebuff>());
         }
     }
 }

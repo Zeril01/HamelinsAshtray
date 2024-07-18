@@ -5,7 +5,7 @@ namespace HamelinsAshtray.Content.Items
 {
     public static class ItemGlowmaskUtils
     {
-        public static void DrawItemGlowmask(Texture2D texture, Terraria.DataStructures.PlayerDrawSet info)
+        public static void DrawItemGlowmask(Terraria.DataStructures.PlayerDrawSet info, Texture2D texture)
         {
             Item item = info.drawPlayer.HeldItem;
             if (info.shadow != 0f || info.drawPlayer.frozen || (info.drawPlayer.itemAnimation <= 0 || item.useStyle == ItemUseStyleID.None)
@@ -43,7 +43,7 @@ namespace HamelinsAshtray.Content.Items
                 texture.Bounds, Color.White * ((255f - item.alpha) / 255f), info.drawPlayer.itemRotation + rotOffset, origin, item.scale, info.playerEffect));
         }
 
-        public static void DrawItemGlowmaskInWorld(Item item, float rotation, float scale, Texture2D texture) =>
+        public static void DrawItemGlowmaskInWorld(Texture2D texture, Item item, float rotation, float scale) =>
             Main.spriteBatch.Draw(texture,
                 new(item.position.X - Main.screenPosition.X + item.width / 2, item.position.Y - Main.screenPosition.Y + item.height - texture.Height / 2),
                 new(0, 0, texture.Width, texture.Height), Color.White * ((255f - item.alpha) / 255f), rotation, new(texture.Width / 2, texture.Height / 2),

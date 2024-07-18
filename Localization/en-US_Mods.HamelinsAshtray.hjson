@@ -8,7 +8,7 @@ Projectiles: {
 Items: {
 	AmberFlamingPistol: {
 		DisplayName: Amber Flaming Pistol
-		Tooltip: Any bullet type can be imbued when fired from this gun
+		Tooltip: Any bullet can be imbued with fire when fired from this gun
 	}
 
 	Corruption: {

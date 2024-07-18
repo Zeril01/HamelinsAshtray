@@ -61,7 +61,7 @@ namespace HamelinsAshtray.Common.GlobalItems
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            void ShowTooltipWhileShiftIsClamped(string text)
+            void ShowWhilePressingShift(string text)
             {
                 if (Main.keyState.PressingShift()) tooltips.Insert(VariousUtils.TooltipUtils.FindIndexByTooltipName(tooltips, "ModifiedByMods"),
                     new(Mod, "ModifiedByHamelinsAshtray", text) { OverrideColor = new Microsoft.Xna.Framework.Color(255, 190, 152) }); // PANTONE - Peach Fuzz
@@ -71,31 +71,31 @@ namespace HamelinsAshtray.Common.GlobalItems
             switch (item.type)
             {
                 case ItemID.IceBlade:
-                    ShowTooltipWhileShiftIsClamped($"{inflict} Frostburn");
+                    ShowWhilePressingShift($"{inflict} Frostburn");
                     break;
 
                 case ItemID.JungleYoyo:
                 case ItemID.Yelets:
-                    ShowTooltipWhileShiftIsClamped($"{inflict} Poisoned");
+                    ShowWhilePressingShift($"{inflict} Poisoned");
                     break;
 
                 case ItemID.FlintlockPistol:
-                    ShowTooltipWhileShiftIsClamped("Item was resprite\nAt first crafting, bullets are given");
+                    ShowWhilePressingShift("Item was resprite\nAt first crafting, bullets are given");
                     break;
 
                 case ItemID.TungstenBullet:
                 case ItemID.CrystalBullet:
                 case ItemID.CursedBullet:
                 case ItemID.IchorBullet:
-                    ShowTooltipWhileShiftIsClamped("Projectile was resprite");
+                    ShowWhilePressingShift("Projectile was resprite");
                     break;
 
                 case ItemID.IceRod:
-                    ShowTooltipWhileShiftIsClamped($"Use style was changed\n{inflict} Frostbite");
+                    ShowWhilePressingShift($"Use style was changed\n{inflict} Frostbite");
                     break;
 
                 case ItemID.WormholePotion:
-                    ShowTooltipWhileShiftIsClamped("Always available from Merchant");
+                    ShowWhilePressingShift("Always available from Merchant");
                     break;
             }
         }
