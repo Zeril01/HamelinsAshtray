@@ -2,10 +2,10 @@
 
 namespace HamelinsAshtray.Content.Buffs
 {
-    public class SapphireFireDebuff : ModBuff
+    public class GlowingMushroomFireDebuff : ModBuff
     {
         public override void SetStaticDefaults() => DebuffUtils.StaticDefaultsDebuff(Type);
 
-        public override void Update(NPC npc, ref int buffIndex) => npc.HamelinsAshtray().sapphireFireDebuff = true;
+        public override void Update(NPC npc, ref int buffIndex) => npc.HamelinsAshtray().glowingMushroomFireDebuff = true;
     }
 }

@@ -2,10 +2,24 @@
 {
     public class Abduction : ModProjectile
     {
-        public override void SetStaticDefaults() => YoyoUtils.StaticDefaultsForYoyo(Type, 5f, 160f, 10.75f);
+        private bool notWet = true;
+
+        public override void SetStaticDefaults() => YoyoUtils.StaticDefaultsYoyo(Type, 5f, 160f, 10.75f);
 
         public override void SetDefaults() => Projectile.CloneDefaults(ProjectileID.Rally);
 
-        public override void PostAI() => YoyoUtils.SpawnDusts(Projectile.position, Projectile.width, Projectile.height, DustID.MushroomTorch);
+        public override void PostAI()
+        {
+            if (notWet)
+            {
+                if (Projectile.wet) notWet = false;
+                YoyoUtils.SpawnDusts(Projectile.position, Projectile.width, Projectile.height, DustID.MushroomTorch);
+            }
+        }
+
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            if (notWet) YoyoUtils.ApplyDebuff(target, ModContent.BuffType<Buffs.GlowingMushroomFireDebuff>());
+        }
     }
 }

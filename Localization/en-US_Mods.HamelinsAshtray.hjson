@@ -13,12 +13,12 @@ Items: {
 
 	Corruption: {
 		DisplayName: Corruption
-		Tooltip: Inflict Frostburn on impact
+		Tooltip: ""
 	}
 
 	Elimination: {
 		DisplayName: Elimination
-		Tooltip: Inflict Sapphire Fire on impact
+		Tooltip: ""
 	}
 
 	Abduction: {
@@ -35,6 +35,11 @@ Buffs: {
 
 	SapphireFireDebuff: {
 		DisplayName: Sapphire Fire Debuff
+		Description: Slowly losing life
+	}
+
+	GlowingMushroomFireDebuff: {
+		DisplayName: Glowing Mushroom Fire Debuff
 		Description: Slowly losing life
 	}
 }

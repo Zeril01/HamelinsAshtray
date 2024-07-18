@@ -4,7 +4,7 @@ namespace HamelinsAshtray.Content.Items.Yoyos
 {
     public class Corruption : ModItem
     {
-        public override void SetStaticDefaults() => YoyoUtils.StaticDefaultsForYoyo(Type, 5);
+        public override void SetStaticDefaults() => YoyoUtils.StaticDefaultsYoyo(Type, 5);
         
         public override void SetDefaults()
         {

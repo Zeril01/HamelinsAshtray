@@ -4,7 +4,7 @@ namespace HamelinsAshtray.Content.Items.Yoyos
 {
     public class Elimination : ModItem
     {
-        public override void SetStaticDefaults() => YoyoUtils.StaticDefaultsForYoyo(Type, 5);
+        public override void SetStaticDefaults() => YoyoUtils.StaticDefaultsYoyo(Type, 5);
 
         public override void SetDefaults()
         {
@@ -17,7 +17,7 @@ namespace HamelinsAshtray.Content.Items.Yoyos
         public override void PostDrawInWorld(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
             Lighting.AddLight(Item.position, new Vector3(0f, 0.1f / 2, 1.3f / 2));
-            YoyoUtils.SpawnDusts(Item.position, Item.width, Item.height, DustID.BlueTorch);
+            if (!Item.wet) YoyoUtils.SpawnDusts(Item.position, Item.width, Item.height, DustID.BlueTorch);
         }
 
         public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> tooltips) => YoyoTooltipUtils.AddEmptyTooltipForLogo(tooltips);

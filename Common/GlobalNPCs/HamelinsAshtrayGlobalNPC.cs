@@ -1,13 +1,11 @@
-﻿using HamelinsAshtray.Content.Buffs;
-
-namespace HamelinsAshtray.Common.GlobalNPCs
+﻿namespace HamelinsAshtray.Common.GlobalNPCs
 {
     public class HamelinsAshtrayGlobalNPC : GlobalNPC
     {
         public override bool InstancePerEntity => true;
-        public bool sapphireFireDebuff, amberFireDebuff;
+        public bool glowingMushroomFireDebuff, sapphireFireDebuff, amberFireDebuff;
 
-        public override void ResetEffects(NPC npc) => sapphireFireDebuff = amberFireDebuff = false;
+        public override void ResetEffects(NPC npc) => glowingMushroomFireDebuff = sapphireFireDebuff = amberFireDebuff = false;
 
         public override void UpdateLifeRegen(NPC npc, ref int damage)
         {
@@ -19,18 +17,40 @@ namespace HamelinsAshtray.Common.GlobalNPCs
                 if (dmg < displayableDmg) dmg = displayableDmg;
             }
 
-            if (sapphireFireDebuff) ApplyDoT(4, 2, ref damage);
+            if (glowingMushroomFireDebuff) ApplyDoT(2, 1, ref damage);
+
+            if (sapphireFireDebuff) ApplyDoT(5, 2, ref damage);
 
             if (amberFireDebuff) ApplyDoT(8, 2, ref damage);
 
-            if (npc.oiled && (sapphireFireDebuff || amberFireDebuff)) ApplyDoT(25, 10, ref damage);
+            if (npc.oiled && (glowingMushroomFireDebuff || sapphireFireDebuff || amberFireDebuff)) ApplyDoT(25, 10, ref damage);
         }
 
         public override void DrawEffects(NPC npc, ref Microsoft.Xna.Framework.Color drawColor)
         {
-            if (sapphireFireDebuff) SapphireFireDebuff.DrawEffects(npc);
+            void AddEffect(int type, int torchID)
+            {
+                if (Main.rand.Next(4) < 3)
+                {
+                    Dust dust = Dust.NewDustDirect(npc.position - new Microsoft.Xna.Framework.Vector2(2f, 2f), npc.width + 4, npc.height + 4, type, npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 100, default, 3.5f);
+                    dust.noGravity = true;
+                    dust.velocity *= 1.8f;
+                    dust.velocity.Y -= 0.5f;
 
-            if (amberFireDebuff) AmberFireDebuff.DrawEffects(npc);
+                    if (Main.rand.NextBool(4))
+                    {
+                        dust.noGravity = false;
+                        dust.scale *= 0.5f;
+                    }
+                }
+                Lighting.AddLight(npc.Center, torchID);
+            }
+
+            if (sapphireFireDebuff) AddEffect(DustID.BlueTorch, TorchID.Blue);
+
+            if (amberFireDebuff) AddEffect(DustID.OrangeTorch, TorchID.Orange);
+
+            if (glowingMushroomFireDebuff) AddEffect(DustID.MushroomTorch, TorchID.Mushroom);
         }
     }
 }
