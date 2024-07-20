@@ -7,7 +7,7 @@
             int lastIndex = tooltips.Count - 1;
             for (int i = lastIndex; i >= 0; i--)
             {
-                if (tooltips[i].Mod == "Terraria" && tooltips[i].Name == name) return i + 1;
+                if (tooltips[i].Mod == "Terraria" && tooltips[i].Name == name) return i;
             }
             return lastIndex;
         }

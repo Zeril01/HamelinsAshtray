@@ -2,8 +2,12 @@
 {
     internal class ModDetector : ModSystem
     {
-        public static bool calamityIsEnabled;
+        public static bool calamityIsEnabled, wayfairIsEnabled;
 
-        public override void PostSetupContent() => calamityIsEnabled = ModLoader.TryGetMod("CalamityMod", out _);
+        public override void PostSetupContent()
+        {
+            calamityIsEnabled = ModLoader.TryGetMod("CalamityMod", out _);
+            wayfairIsEnabled = ModLoader.TryGetMod("WAYFAIRContent", out _);
+        }
     }
 }

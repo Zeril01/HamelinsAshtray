@@ -19,6 +19,7 @@ namespace HamelinsAshtray.Common.GlobalItems
                 case ItemID.CursedBullet:
                 case ItemID.IchorBullet:
                 case ItemID.WormholePotion:
+                case ItemID.ManaCrystal:
                     item.StatsModifiedBy.Add(Mod);
                     break;
 
@@ -63,7 +64,7 @@ namespace HamelinsAshtray.Common.GlobalItems
         {
             void ShowWhilePressingShift(string text)
             {
-                if (Main.keyState.PressingShift()) tooltips.Insert(VariousUtils.TooltipUtils.FindIndexByTooltipName(tooltips, "ModifiedByMods"),
+                if (Main.keyState.PressingShift()) tooltips.Insert(VariousUtils.TooltipUtils.FindIndexByTooltipName(tooltips, "ModifiedByMods") + 1,
                     new(Mod, "ModifiedByHamelinsAshtray", text) { OverrideColor = new Microsoft.Xna.Framework.Color(255, 190, 152) }); // PANTONE - Peach Fuzz
             }
 
@@ -96,6 +97,10 @@ namespace HamelinsAshtray.Common.GlobalItems
 
                 case ItemID.WormholePotion:
                     ShowWhilePressingShift("Always available from Merchant");
+                    break;
+
+                case ItemID.ManaCrystal:
+                    ShowWhilePressingShift("Can be found Underground");
                     break;
             }
         }

@@ -23,11 +23,16 @@
                     SpawnDusts(projectile, DustID.Smoke, 0.8f);
                 }
             }
+
+            if (projectile.type == ProjectileID.WoodenArrowFriendly && projectile.lavaWet)
+            {
+                projectile.type = ProjectileID.FireArrow;
+            }
         }
 
         public override void PostAI(Projectile projectile)
         {
-            if ((projectile.type == ProjectileID.JungleYoyo || projectile.type == ProjectileID.Yelets) && Main.rand.NextBool(6))
+            if ((projectile.type is ProjectileID.JungleYoyo or ProjectileID.Yelets) && Main.rand.NextBool(6))
             {
                 int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, DustID.Poisoned, 0f, 0f, 100);
                 Main.dust[dust].noGravity = true;
