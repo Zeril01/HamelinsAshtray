@@ -1,6 +1,6 @@
 ﻿namespace HamelinsAshtray.Common.GlobalNPCs
 {
-    public class NPCShops : GlobalNPC
+    class NPCShops : GlobalNPC
     {
         public override void ModifyShop(NPCShop shop)
         {

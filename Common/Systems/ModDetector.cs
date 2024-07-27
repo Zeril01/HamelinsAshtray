@@ -1,13 +1,9 @@
 ﻿namespace HamelinsAshtray.Common.Systems
 {
-    internal class ModDetector : ModSystem
+    class ModDetector : ModSystem
     {
-        public static bool calamityIsEnabled, wayfairIsEnabled;
+        public static bool calamityIsEnabled;
 
-        public override void PostSetupContent()
-        {
-            calamityIsEnabled = ModLoader.TryGetMod("CalamityMod", out _);
-            wayfairIsEnabled = ModLoader.TryGetMod("WAYFAIRContent", out _);
-        }
+        public override void PostSetupContent() => calamityIsEnabled = ModLoader.TryGetMod("CalamityMod", out _);
     }
 }
