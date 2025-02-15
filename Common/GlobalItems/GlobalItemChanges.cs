@@ -7,7 +7,7 @@ namespace HamelinsAshtray.Common.GlobalItems
         public override bool InstancePerEntity => true;
 
         public override void SetStaticDefaults() => Item.staff[ItemID.IceRod] = true;
-        
+
         public override void SetDefaults(Item item)
         {
             switch (item.type)
@@ -45,11 +45,11 @@ namespace HamelinsAshtray.Common.GlobalItems
             Players.HamelinsAshtrayPlayer hap = new();
 
             Recipe.Create(ItemID.FlintlockPistol)
-                  .AddRecipeGroup(RecipeGroupID.IronBar, 10)
-                  .AddRecipeGroup(RecipeGroupID.Wood, 3)
-                  .AddTile(TileID.Anvils)
+                .AddRecipeGroup(RecipeGroupID.IronBar, 10)
+                .AddRecipeGroup(RecipeGroupID.Wood, 3)
+                .AddTile(TileID.Anvils)
 
-                  .AddOnCraftCallback((Recipe recipe, Item item, List<Item> consumedItems, Item destinationStack) =>
+                .AddOnCraftCallback((Recipe recipe, Item item, List<Item> consumedItems, Item destinationStack) =>
                   {
                       if (hap.canSpawnMusketBalls)
                       {
